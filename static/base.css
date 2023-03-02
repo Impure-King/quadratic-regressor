@@ -1,0 +1,21 @@
+.bar{
+    background-color: green;
+    width: auto;
+    height: auto;
+}
+
+.home-link{
+    color:black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+}
+
+.about-link{
+    color:black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+body{
+    background-color: cyan;
+}

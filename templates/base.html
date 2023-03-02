@@ -1,0 +1,20 @@
+{% extends "bootstrap/base.html" %}
+
+{% block head %}
+    {{super()}}
+    <link rel="stylesheet" href="{{url_for('static', filename='base.css')}}">
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar">
+        <div class = "bar">
+            <ul>
+                <ol><a href="/home" class="home-link">Start Page</a></ol>
+                <ol><a href="/about" class="about-link">About Me</a></ol>
+            </ul>
+        </div>
+        <div>
+            <span class="line"></span>
+        </div>
+    </nav>
+{% endblock %}
