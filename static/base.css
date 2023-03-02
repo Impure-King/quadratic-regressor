@@ -1,7 +1,8 @@
 .bar{
-    background-color: green;
+    background-color: lightcoral;
     width: auto;
-    height: auto;
+    height: fit-content;
+    box-shadow: 10px 10px 5px lightblue;
 }
 
 .home-link{
@@ -13,7 +14,22 @@
 .about-link{
     color:black;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
+    font-size: 25px;
+}
+
+.links{
+    text-align:left;
+}
+
+.links ol{
+    display: inline-block;
+}
+
+
+
+.logo{
+    text-align: center;
+    color: rebeccapurple;
 }
 
 body{
