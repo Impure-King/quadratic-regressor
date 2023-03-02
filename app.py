@@ -15,6 +15,10 @@ def start():
 def about():
     return render_template("about.html")
 
+@app.route('/3-D Print')
+def project1():
+    return render_template("print.html")
+
 # Error Handlers:
 @app.errorhandler(404)
 def handle404(error):
