@@ -9,7 +9,7 @@ strap = Bootstrap(app)
 @app.route('/')
 @app.route('/home')
 def start():
-    return render_template("home.html")
+    return render_template("index.html")
 
 @app.route('/about')
 def about():
