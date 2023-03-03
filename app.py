@@ -17,7 +17,7 @@ def about():
 
 @app.route('/3-D Print')
 def project1():
-    return render_template("print.html")
+    return render_template("project1.html")
 
 # Error Handlers:
 @app.errorhandler(404)

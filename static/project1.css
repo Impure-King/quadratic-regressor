@@ -6,3 +6,24 @@ body{
     color:black;
     text-align: center;
 }
+
+.demo-image{
+    text-align: center;
+}
+
+.demo-descript{
+    text-align: center;
+    background-color: gold;
+}
+
+.demo-image {
+    box-shadow: 10px 10px 5px;
+    background-color: gold;
+}
+
+.demo-image img{
+    height: 400px;
+    width: 325px;
+    border: 10px solid lightblue;
+    border-radius: 10px;
+}
