@@ -5,6 +5,12 @@
     box-shadow: 10px 10px 5px rgb(57, 57, 57);
 }
 
+.bar:hover{
+    background-color: yellowgreen;
+    color: white;
+    height: 100px;
+}
+
 .home-link{
     color:black;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -31,8 +37,10 @@
     display: inline-block;
 }
 
-
+.link ol a{
+    display:table;
+}
 
 body{
-    background-color: cyan;
+    background-color: aliceblue;
 }
