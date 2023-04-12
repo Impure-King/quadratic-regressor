@@ -5,11 +5,6 @@
     box-shadow: 10px 10px 5px rgb(57, 57, 57);
 }
 
-.bar:hover{
-    background-color: yellowgreen;
-    color: white;
-    height: 100px;
-}
 
 .home-link{
     color:black;
@@ -43,4 +38,16 @@
 
 body{
     background-color: aliceblue;
+}
+
+#toggle {
+    text-align: center;
+}
+
+#toggler {
+    border: 0px;
+}
+
+#toggler:hover {
+    background-color: aqua;
 }
