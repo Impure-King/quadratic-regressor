@@ -5,7 +5,7 @@ var toggle = 0;
 button_toggler?.addEventListener('click', () => {
     if (toggle % 2 == 0){
         alert("The navbar was toggled");
-        console.log("lol")
+        alert("lol")
     }
     toggle += 1;
 });

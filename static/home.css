@@ -1,8 +1,23 @@
-.content{
-    color:blue;
+#title{
+    color: dark gray;
     text-align: center;
 }
 
+#title h1 {
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+.content{
+    text-align: center;
+}
+
+.content p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    color: black;
+}
+
 body{
-    background-color: bisque;
+    background-color: aliceblue;
 }

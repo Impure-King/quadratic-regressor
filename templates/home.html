@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} Start Page {% endblock %}
+{% block head %}
+    {{super()}}
+    <link rel="stylesheet" href='{{ url_for("static", filename="home.css") }}' type="text/css">
+{% endblock %}
+{% block content %}
+    <div id="title">
+        <h1>Portfolio</h1>
+    </div>
+    <br>
+    <div class="content">
+        <p>
+            Welcome to my portfolio! Please use the navigation bars to navigate to my different projects.
+            If there are any confusions, please use the following link to guide yourself through the website.
+        </p>
+        <br>
+        <p> All my Sparkade projects are hidden under the tab of the </p>
+    </div>
+{% endblock %}

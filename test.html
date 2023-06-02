@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Navbar Example</title>
+  <style>
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f2f2f2;
+      padding: 10px;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+    }
+
+    .navbar-menu {
+      display: none;
+    }
+
+    .navbar-menu.active {
+      display: block;
+    }
+
+    .navbar-nav {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .nav-item {
+      margin-right: 10px;
+    }
+
+    .nav-item a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .navbar-toggle {
+      font-size: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">Logo</div>
+    <div class="navbar-menu">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a href="#">Home</a></li>
+        <li class="nav-item"><a href="#">About</a></li>
+        <li class="nav-item"><a href="#">Services</a></li>
+        <li class="nav-item"><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <button class="navbar-toggle" id="navbarToggleBtn">&#9776;</button>
+  </nav>
+
+  <script>
+    const navbarToggleBtn = document.getElementById('navbarToggleBtn');
+    const navbarMenu = document.querySelector('.navbar-menu');
+
+    navbarToggleBtn.addEventListener('click', () => {
+      navbarMenu.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
