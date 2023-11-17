@@ -1,53 +1,69 @@
-.bar{
-    background-color:bisque;
-    width: auto;
-    height: fit-content;
-    box-shadow: 10px 10px 5px rgb(57, 57, 57);
+/* Global Settings */
+* {
+    font-family: sans-serif;
 }
 
-
-.home-link{
-    color:black;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 30px;
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(55, 55, 55);
 }
 
-.about-link{
-    color:black;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 25px;
+/* Navbar height and background-color. */
+.navbar {
+    background-color: rgba(44, 44, 215, 0.799);
+    height: 50px;
+    box-shadow: 0 0 20px black;
 }
 
-.project1-link{
-    color: black;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 15px;
+/* Customizing the unordered list possibility. */
+.navbar-list {
+    margin: 0;
+    padding: 0;
+    float: left;
+    display: block;
+    color: white;
 }
 
-.links{
-    text-align:left;
+/* Manipulating List objects */
+.navbar-list li {
+    float: left;
+    list-style-type: none;
 }
 
-.links ol{
-    display: inline-block;
+.navbar-list li div {
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+    height: 20px;
 }
 
-.link ol a{
-    display:table;
+.navbar-list li div a {
+    color: white;
+    text-decoration: none;
 }
 
-body{
-    background-color: aliceblue;
+.navbar-list li div:hover {
+    background-color: rgb(53, 53, 226);
+    transition: 0.5s;
 }
 
-#toggle {
-    text-align: center;
+/* Manipulating the logo size */
+#navbar-logo-div {
+    padding: 0;
 }
 
-#toggler {
-    border: 0px;
+#navbar-logo{
+    height: 50px;
 }
 
-#toggler:hover {
-    background-color: aqua;
+#navbar-logo:hover {
+    box-shadow: 0 0 20px black;
+    transition: 0.5s;
+}
+
+/* Adding the margins back again */
+.body {
+    padding: 5px;
 }

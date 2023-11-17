@@ -1,29 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %} 3-D Ring {% endblock %}
 
 {% block head %}
     {{super()}}
+    <title>Quadratic Regressor</title>
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='project1.css')}}">
 {% endblock %}
 
 {% block content %}
-    <h1 class="title">Geass Based Ring Design</h1>
-    <br>
-     
-    <div class="demo-image">
-        <h5 class="demo-descript">Final Model:</h5>   
-        <img src="{{url_for('static', filename='project1/demo.jpg')}}">
-    </div>
+    <h1 id="title">Quadratic Regressor</h1>
+    <p>This is a quadratic regressor that can output the equation of a parabola, when given either 3 points or the vertex and another point.</p>
+    <hr>
+    <div class="quadratic_solver_1">
+        <form method="post" action={{answer_page}}>
+            <h3>Method 1</h3>
+            <label>Enter the vertex: </label>
+            <label>(<input class="input" id="vertexx" name="vertexx", type="number">, <input class="input" id="vertexy" name="vertexy" type="number">)</label><br><br>
 
-    <div class="phase1">
-        <h2> Research and Brainstorm</h2>
-        <p>
-            During this phase, I spent most of the time researching
-            about existing jewelry and which type of jewelry should I choose.
-            While looking at the different ideas, I realized that the gem is the most 
-            important of the jewelry, so I decided to keep the shank simple and create an 
-            intricate gem design instead.
-        </p>
+            <label>Enter another valid point: </label>
+            <label>(<input class="input" id="pointx" name="pointx" type="number">, <input class="input" id="pointy" name="pointy", type="number">)</label><br><br>
+            <input type="submit" value="Submit">
+        </form>
     </div>
 {% endblock %}

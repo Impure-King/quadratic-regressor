@@ -1,29 +1,22 @@
-body{
-    background-color: cornflowerblue;
-}
-
-.title{
-    color:black;
+#title {
     text-align: center;
 }
 
-.demo-image{
+.body {
+    color: white;
+}
+
+.body p {
     text-align: center;
 }
 
-.demo-descript{
-    text-align: center;
-    background-color: gold;
+/* Managing the first method: */
+.quadratic_solver_1 p {
+    text-align: left;
 }
 
-.demo-image {
-    box-shadow: 10px 10px 5px;
-    background-color: gold;
-}
-
-.demo-image img{
-    height: 400px;
-    width: 325px;
-    border: 10px solid lightblue;
-    border-radius: 10px;
+/* Managing the inputs */
+.input {
+    min-width:10px;
+    max-width:50px;
 }

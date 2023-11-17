@@ -1,21 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %} Start Page {% endblock %}
 {% block head %}
     {{super()}}
-    <link rel="stylesheet" href='{{ url_for("static", filename="home.css") }}' type="text/css">
+    <title>Home Page</title>
+    <link rel="stylesheet" href='../static/home.css' type="text/css">
 {% endblock %}
 {% block content %}
-    <div id="title">
-        <h1>Portfolio</h1>
-    </div>
-    <br>
-    <div class="content">
-        <p>
-            Welcome to my portfolio! Please use the navigation bars to navigate to my different projects.
-            If there are any confusions, please use the following link to guide yourself through the website.
-        </p>
-        <br>
-        <p> All my Sparkade projects are hidden under the tab of the </p>
-    </div>
+    <h1>Home Page</h1>
+    <p>
+        Welcome to the quadratic solver, where you can input 3 points to plot a quadratic and figure out the equation of the line.
+    </p>
 {% endblock %}

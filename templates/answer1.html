@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Answer</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='answer1.css')}}">
+{% endblock %}
+
+{% block content %}
+    {% if valid_input %}
+    <p>The equation is: {{equation}}</p>
+    <p>Click Quadratic Regressor on the navbar to head back.</p>
+    {% else %}
+    <p>bruh</p>
+    {% endif %}
+{% endblock %}
