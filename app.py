@@ -17,7 +17,7 @@ class IncorrectInput(object):
 # Parsing the coordinates:
 def convert(number:str):
     try:
-        return float(request.form([number]))
+        return float(request.form[number])
     except:
         return IncorrectInput(f"""A numerical value is not inputted.
                                   A numerical value is an rational number written with in arabic numerals.
@@ -27,7 +27,7 @@ def convert(number:str):
 
 def vertex_solver(h, k, x, y):
     if x == h:
-        return IncorrectInput("When using ver")
+        return IncorrectInput("When using vertex solver, please try inputting")
 
 # The real pages:
 @app.route('/')
@@ -51,6 +51,7 @@ def solve():
         a = (y - k)/(x - h)**2
     except:
         a = 1
+    
     return render_template("answer1.html", equation=f"y = {a}(x - {h})^2 + {k}", valid_input=True)
 
 # Error Handlers:
