@@ -10,13 +10,25 @@
     text-align: center;
 }
 
+.body {
+    text-align: center;
+}
+
 /* Managing the first method: */
-.quadratic_solver_1 p {
-    text-align: left;
+.quadratic_solver_1 {
+    text-align: center;
 }
 
 /* Managing the inputs */
 .input {
     min-width:10px;
     max-width:50px;
+}
+
+/* Managing the dropdown */
+#methods {
+    width:fit-content;
+    font-size: 20px;
+    font-weight: bold;
+    margin:20px;
 }

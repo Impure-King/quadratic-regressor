@@ -3,7 +3,7 @@ import numpy as np
 
 app = Flask(__name__)
 
-answer_page = "9"
+answer_page = "current_answer"
 
 # An Error handling class:
 class IncorrectInput(object):
@@ -14,20 +14,12 @@ class IncorrectInput(object):
         self.error_message = error
 
 
-# Parsing the coordinates:
 def convert(number:str):
-    try:
-        return float(request.form[number])
-    except:
-        return IncorrectInput(f"""A numerical value is not inputted.
-                                  A numerical value is an rational number written with in arabic numerals.
-                                  Additionally ensure that an extra '-' or an extra '+' is not inputted.
-                                  Don't be an idiot.
-                                  Current Value {number}.""")
-
+    """Converts a string to a float."""
+    return float(request.form[number])
+    
 def vertex_solver(h, k, x, y):
-    if x == h:
-        return IncorrectInput("When using vertex solver, please try inputting")
+    return (y-k)/(x-h)**2
 
 # The real pages:
 @app.route('/')
@@ -43,16 +35,18 @@ def project():
 # Solved page:
 @app.route('/' + answer_page, methods=["POST"])
 def solve():
+    valid_input = True
     h = convert('vertexx')
     k = convert('vertexy')
     x = convert('pointx')
     y = convert('pointy')
-    try:
-        a = (y - k)/(x - h)**2
-    except:
-        a = 1
-    
-    return render_template("answer1.html", equation=f"y = {a}(x - {h})^2 + {k}", valid_input=True)
+    a = vertex_solver(h, k, x, y)
+    if isinstance(a, IncorrectInput):
+        valid_input=False
+        equation=a.error_message
+    else:
+        equation = f"y = {a}(x - {h})^2 + {k}"
+    return render_template("answer1.html", equation=equation, valid_input=valid_input)
 
 # Error Handlers:
 @app.errorhandler(404)
