@@ -6,7 +6,7 @@ import os
 matplotlib.use("agg")
 app = Flask(__name__)
 
-answer_page = "answer"
+answer_page = "/answer"
 
 # Various helper functions:
 def equation_definer(h:float, k:float, a:float):
