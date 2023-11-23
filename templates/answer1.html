@@ -6,6 +6,15 @@
 {% endblock %}
 
 {% block content %}
-    <p>The equation is: {{equation}}</p>
-    <p>Click Quadratic Regressor on the navbar to head back.</p>
+    <h1>Calculated Answer</h1>
+    <hr>
+    <p>{{equation}}</p>
+    <hr>
+    <div class="ans_img">
+    {% if plot_show %}
+        <img src="../static/images/plot.jpg">
+        <hr>
+    {% endif %}
+    </div>
+    <p><b>Click <a href='/Quadratic Regressor'>Quadratic Regressor</a> on the navbar to head back.</b></p>
 {% endblock %}

@@ -3,12 +3,14 @@
 
 {% block head %}
     {{super()}}
+    <!--Creating the basic titles and css.-->
     <title>Quadratic Regressor</title>
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='project1.css')}}">
     <script src='../static/scripts/validate_form.js'></script>
 {% endblock %}
 
 {% block content %}
+    <!--Making the various-->
     <h1 id="title">Quadratic Regressor</h1>
     <p>This is a quadratic regressor that can output the equation of a vertical parabola with two methods.</p>
     <p>Method 1: Enter <b>numerical vertex + point</b> of the vertical parabola.</p>
@@ -19,9 +21,10 @@
     
     <div class="quadratic_solver_1">
         <select name="methods" id="methods" onchange="changeForm()">
-            <option value="1">Method 1</option>
-            <option value="2">Method 2</option>
+            <option value="1">Vertex Mode</option>
+            <option value="2">Point Mode</option>
         </select>
+
         <form id="solver_1" name="solver_1" method="post" onsubmit="return validateNonEmpty1()" action={{answer_page}}>
             <label>Enter the vertex: </label>
             <label>(<input class="input" name="vertexx", step="any", type="number">, <input class="input" name="vertexy" step="any" type="number">)</label><br><br>
@@ -30,6 +33,7 @@
             <label>(<input class="input" name="pointx" step="any" type="number">, <input class="input" name="pointy", type="number" step="any">)</label><br><br>
             <input type="submit" value="Submit">
         </form>
+
         <form id="solver_2" name="solver_2" method="post" onsubmit="return validateNonEmpty2()" action='answer2'>
             <label>Enter the first point: </label>
             <label>(<input class="input" name="x1", step="any", type="number">, <input class="input" name="y1" step="any" type="number">)</label><br><br>
@@ -42,10 +46,7 @@
 
             <input type="submit" value="Submit">
         </form>
+
     </div>
     <hr>
-    <p>{{equation}}</p>
-    {% if plot_show %}
-        <img src="../static/images/plot.jpg">
-    {% endif %}
 {% endblock %}
