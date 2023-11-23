@@ -10,24 +10,42 @@
 
 {% block content %}
     <h1 id="title">Quadratic Regressor</h1>
-    <p>This is a quadratic regressor that can output the equation of a parabola with two methods.</p>
-    <p>Method 1: Enter <b>numerical vertex + point</b> of the parabola.</p>
-    <p>Method 2: Enter <b>3 numerical points</b> of the parabola.</p>
-    <p>All the coordinates will be treated as rectangular.</p>
+    <p>This is a quadratic regressor that can output the equation of a vertical parabola with two methods.</p>
+    <p>Method 1: Enter <b>numerical vertex + point</b> of the vertical parabola.</p>
+    <p>Method 2: Enter <b>3 numerical points</b> of the vertical parabola.</p>
+    <p>All the coordinates will be treated as rectangular coordinates.</p>
+    <p><b>Note: Horizontal Parabolas are not supported in the scope of this project.</b></p>
     <hr>
     
     <div class="quadratic_solver_1">
-        <select name="methods" id="methods">
+        <select name="methods" id="methods" onchange="changeForm()">
             <option value="1">Method 1</option>
             <option value="2">Method 2</option>
         </select>
-        <form name="solver_1" method="post" onsubmit="return validateNonEmpty()" action={{answer_page}}>
+        <form id="solver_1" name="solver_1" method="post" onsubmit="return validateNonEmpty1()" action={{answer_page}}>
             <label>Enter the vertex: </label>
-            <label>(<input class="input" id="vertexx" name="vertexx", type="number">, <input class="input" id="vertexy" name="vertexy" type="number">)</label><br><br>
+            <label>(<input class="input" name="vertexx", step="any", type="number">, <input class="input" name="vertexy" step="any" type="number">)</label><br><br>
 
             <label>Enter another valid point: </label>
-            <label>(<input class="input" id="pointx" name="pointx" type="number">, <input class="input" id="pointy" name="pointy", type="number">)</label><br><br>
+            <label>(<input class="input" name="pointx" step="any" type="number">, <input class="input" name="pointy", type="number" step="any">)</label><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <form id="solver_2" name="solver_2" method="post" onsubmit="return validateNonEmpty2()" action='answer2'>
+            <label>Enter the first point: </label>
+            <label>(<input class="input" name="x1", step="any", type="number">, <input class="input" name="y1" step="any" type="number">)</label><br><br>
+
+            <label>Enter the second point: </label>
+            <label>(<input class="input" name="x2" step="any" type="number">, <input class="input" name="y2", type="number" step="any">)</label><br><br>
+            
+            <label>Enter the third point: </label>
+            <label>(<input class="input" name="x3", step="any", type="number">, <input class="input" name="y3" step="any" type="number">)</label><br><br>
+
             <input type="submit" value="Submit">
         </form>
     </div>
+    <hr>
+    <p>{{equation}}</p>
+    {% if plot_show %}
+        <img src="../static/images/plot.jpg">
+    {% endif %}
 {% endblock %}
