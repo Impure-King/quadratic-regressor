@@ -1,121 +1,35 @@
-from flask import Flask, render_template, request
+# Important imports
+from flask import (Flask, render_template, request)
+
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
-import os
+from dependency import (coefficient_solver,
+                       vertex_equation_concatenator,
+                       general_equation_concatenator,
+                       leading_coefficient_solver,
+                       complete_general_equation_solver)
+
 matplotlib.use("agg")
+
+# Starting the application:
 app = Flask(__name__)
 
+# Naming the redirect link:
 answer_page = "/answer"
 
-# Various helper functions:
-def equation_definer(h:float, k:float, a:float):
-    """An symbolic equation defined"""
-    lists = [h, k, a]
-    for index, i in enumerate(lists):
-        if i == int(i):
-            lists[index] = int(i)
-    h, k, a = lists
-    part1 = "y = "
-    part2 = "(x - h)^2"
-    part3 = " + k"
-    if h == 0:
-        part2 = "x^2"
-    elif h < 0:
-        part2 = f"(x + {(h**2)**0.5})^2"
-    else:
-        part2 = f"(x - {h})^2"
-    
-    if a == 0:
-        part2 = ""
-    elif a != 1:
-        part2 = str(a) + part2
-    
-    if k == 0:
-        part3 = ""
-    elif k < 0:
-        part3 = f" - {(k**2)**0.5}"
-    else:
-        part3 = f" + {k}"
+# defining step:
+step_val = "0.001"
 
+# Helper function:
 
-    # Handling the graphing:
-    x = np.arange(-100, 100)
-    y = a * (x - h)**2 + k
-    plt.plot(x, y)
-    plt.title("General Graph")
-    plt.grid(True)
-    plt.savefig("./static/images/plot.jpg")
-    plt.clf()
-    return part1 + part2 + part3
+def get_value(input_name:str):
+    """Returns a float value when given the name of the input_box.
+    Arguments:
+        input_name (string): A string denoting the name of the input.
+    """
+    return float(request.form[input_name])    
 
-def convert(number:str):
-    """Converts a string to a float."""
-    return float(request.form[number])
-    
-def vertex_solver(h, k, x, y):
-    return (y-k)/(x-h)**2
-
-def generalSolverCleaner(a, b, c):
-    lists = [a, b, c]
-    for index, i in enumerate(lists):
-        if i == int(i):
-            lists[index] = int(i)
-    a, b, c = lists
-    part0 = "y = "
-    part1 = f"{a}x^2"
-    part2 = f" + {b}x"
-    part3 = f" + {c}"
-    if a == 1:
-        part1 = "x^2"
-
-    if b == 0:
-        part2 = ""
-    elif b < 0:
-        part2 = f" - {str(b)[1:]}x"
-    
-    if c == 0:
-        part3 = ""
-    elif c < 0:
-        part3 = f" - {str(c)[1:]}"
-
-    return part0 + part1 + part2 + part3
-    
-
-
-def generalSolver(x1, y1, x2, y2, x3, y3):
-    regressioned = False
-    inputs = [x1, x2, x3]
-    outputs = [y1, y2, y3]
-    x = np.array(inputs)
-    y = np.array(outputs)
-    X = np.vstack([np.ones(x.shape), x, x**2]).T
-    try:
-        coefficients = np.linalg.solve(X, y)
-    except np.linalg.LinAlgError:
-        try:
-            coefficients = np.linalg.solve(X.T @ X, X.T @ y)
-            regressioned = True
-        except np.linalg.LinAlgError:
-            return "Equation doesn't exist.", False
-    if not (X @ coefficients == y).all() and regressioned:
-        return "Equation doesn't exist.", False
-    if coefficients[-1] == 0:
-        return "The equation will yield a line, due to leading coefficient being zero.", False
-    
-    equation = generalSolverCleaner(coefficients[-1], coefficients[-2], coefficients[-3])
-    # equation = f" y = {coefficients[-1]}x^2 + {coefficients[-2]}x + {coefficients[-3]}."
-
-    xs = np.arange(np.min(x) - 2, np.max(x) + 2, step=1e-2)
-    ys =  coefficients[-1] * xs**2 + coefficients[-2] * xs + coefficients[-3]
-    plt.title("General Graph")
-    plt.plot(xs, ys)
-    plt.scatter(x, y, c='g')
-    plt.legend("green")
-    plt.grid(True)
-    plt.savefig("./static/images/plot.jpg")
-    plt.clf()
-    return equation, True
 
 # The real pages:
 @app.route('/')
@@ -126,25 +40,25 @@ def start():
 # Actual Project input page:
 @app.route('/Quadratic Regressor')
 def project():
-    return render_template("project1.html", answer_page=answer_page)
+    return render_template("project1.html", answer_page=answer_page, step = step_val)
 
 # Solved page:
 @app.route('/' + answer_page, methods=["POST"])
 def solve1():
-    h = convert('vertexx')
-    k = convert('vertexy')
-    x = convert('pointx')
-    y = convert('pointy')
-    a = vertex_solver(h, k, x, y)
-    equation = equation_definer(h, k, a)
+    h = get_value('vertexx')
+    k = get_value('vertexy')
+    x = get_value('pointx')
+    y = get_value('pointy')
+    a = leading_coefficient_solver(h, k, x, y)
+    equation = vertex_equation_concatenator(h, k, a)
     return render_template("answer1.html", equation=equation, plot_show=True)
 
 @app.route('/answer2', methods=["POST"])
 def solve2():
-    x1, y1 = convert("x1"), convert("y1")
-    x2, y2 = convert("x2"), convert("y2")
-    x3, y3 = convert("x3"), convert("y3")
-    equation, bools = generalSolver(x1, y1, x2, y2, x3, y3)
+    x1, y1 = get_value("x1"), get_value("y1")
+    x2, y2 = get_value("x2"), get_value("y2")
+    x3, y3 = get_value("x3"), get_value("y3")
+    equation, bools = complete_general_equation_solver(x1, y1, x2, y2, x3, y3)
     return render_template("answer1.html", equation=equation, plot_show=bools)
 
 # Error Handlers:

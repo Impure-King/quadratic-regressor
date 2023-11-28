@@ -6,7 +6,8 @@
     <!--Creating the basic titles and css.-->
     <title>Quadratic Regressor</title>
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='project1.css')}}">
-    <script src='../static/scripts/validate_form.js'></script>
+    <script src='../static/scripts/validate_form.js'></script> 
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -17,6 +18,7 @@
     <p>Method 2: Enter <b>3 numerical points</b> of the vertical parabola.</p>
     <p>All the coordinates will be treated as rectangular coordinates.</p>
     <p><b>Note: Horizontal Parabolas are not supported in the scope of this project.</b></p>
+    <p><b>Also, some coordinates may produce estimates for the equation.</b></p>
     <hr>
     
     <div class="quadratic_solver_1">
@@ -27,26 +29,25 @@
 
         <form id="solver_1" name="solver_1" method="post" onsubmit="return validateNonEmpty1()" action={{answer_page}}>
             <label>Enter the vertex: </label>
-            <label>(<input class="input" name="vertexx", step="any", type="number">, <input class="input" name="vertexy" step="any" type="number">)</label><br><br>
+            <label>(<input class="input" name="vertexx", step={{step}} type="number">, <input class="input" name="vertexy" step={{step}} type="number">)</label><br><br>
 
             <label>Enter another valid point: </label>
-            <label>(<input class="input" name="pointx" step="any" type="number">, <input class="input" name="pointy", type="number" step="any">)</label><br><br>
+            <label>(<input class="input" name="pointx" step={{step}} type="number">, <input class="input" name="pointy" step={{step}} type="number">)</label><br><br>
             <input type="submit" value="Submit">
         </form>
 
         <form id="solver_2" name="solver_2" method="post" onsubmit="return validateNonEmpty2()" action='/answer2'>
             <label>Enter the first point: </label>
-            <label>(<input class="input" name="x1", step="any", type="number">, <input class="input" name="y1" step="any" type="number">)</label><br><br>
+            <label>(<input class="input" name="x1", step={{step}} type="number">, <input class="input" name="y1" step={{step}} type="number">)</label><br><br>
 
             <label>Enter the second point: </label>
-            <label>(<input class="input" name="x2" step="any" type="number">, <input class="input" name="y2", type="number" step="any">)</label><br><br>
+            <label>(<input class="input" name="x2" step={{step}} type="number">, <input class="input" name="y2" step={{step}} type="number">)</label><br><br>
             
             <label>Enter the third point: </label>
-            <label>(<input class="input" name="x3", step="any", type="number">, <input class="input" name="y3" step="any" type="number">)</label><br><br>
+            <label>(<input class="input" name="x3", step={{step}} type="number">, <input class="input" name="y3" step={{step}} type="number">)</label><br><br>
 
             <input type="submit" value="Submit">
         </form>
-
     </div>
     <hr>
 {% endblock %}

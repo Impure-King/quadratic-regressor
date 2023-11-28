@@ -22,6 +22,13 @@ function validateNonEmpty2() {
         alert(" 2 or more coincident coordinates have been given.");
         return false;
     }
+
+    // Same x case handling:
+    if (list1[0] == list2[0] || list2[0] == list3[0] || list1[0] == list3[0]){
+        alert("2 or more points can't have the same x-coordinate, since we are graphing a function.");
+        return false;
+    }
+
 }
 
 function validateNonEmpty1() {
