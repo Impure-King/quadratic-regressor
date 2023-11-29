@@ -1,11 +1,9 @@
 # Important Computing libraries:
 import numpy as np
 from numpy import ndarray
-import matplotlib.pyplot as plt
-import matplotlib
+import plotly.graph_objects as po
+import plotly.express as px
 
-# Setting the backend:
-matplotlib.use("agg")
 
 
 # Creating various reusable functions for equation defining:
@@ -52,20 +50,18 @@ def vertex_equation_concatenator(h:float, k:float, a:float) -> str:
         part3 = f" - {abs(k)}"
     
     # Handling final graphing:
-    x: ndarray = np.arange(-100, 100) 
+    x: ndarray = np.arange(int(-1e2), int(1e2 + 1)) 
 
     # Getting the y values:
     y: ndarray = a * (x - h)**2 + k
 
-    # Graphing the results.
-    plt.title("General Graph")
-    plt.plot(x, y, label="Equation Graph")
-    plt.grid(True)
-    plt.savefig("./static/images/plot.jpg") # Saving the graph
+    # Graphing the results:
+    fig = px.line(x = x, y = y, title="General Graph", labels={"x":"x-axis", "y":"y-axis"})
+    fig.write_html("./templates/image.html")
 
-    # Clearing the graph:
-    plt.clf()
-    return part1 + part2 + part3
+    equation = part1 + part2 + part3
+
+    return equation
 
 
 def general_equation_concatenator(a:float, b: float, c: float) -> str:
@@ -92,6 +88,8 @@ def general_equation_concatenator(a:float, b: float, c: float) -> str:
     part3: str = f" + {c}"
     if a == 1:
         part1 = "x^2"
+    elif a == 0:
+        part1 = ""
 
     if b == 0:
         part2 = ""
@@ -190,18 +188,15 @@ def complete_general_equation_solver(x1, y1, x2, y2, x3, y3):
         except:
             return "The Equation doesn't exist.", False
 
-    if coefficients[-1] == 0:
-        return "The equation will yield a line, due to leading coefficient being zero.", False
-
     equation = general_equation_concatenator(coefficients[-1], coefficients[-2], coefficients[-3])
 
+    # Graphing the values:
     xs = np.arange(np.min(x) - 2, np.max(x) + 2, step=1e-2)
     ys =  coefficients[-1] * xs**2 + coefficients[-2] * xs + coefficients[-3]
-    plt.title("General Graph")
-    plt.plot(xs, ys, label = "General Parabola")
-    plt.scatter(x, y, c='g', label = "Inputted Points")
-    plt.legend()
-    plt.grid(True)
-    plt.savefig("./static/images/plot.jpg")
-    plt.clf()
+    fig = px.line(x=xs, y=ys, title="General Graph", labels={"x": "x-axis", "y": "y-axis"})
+    fig.write_html("./templates/image.html")
+
+    if coefficients[-1] == 0:
+        return "The equation will yield a line, due to leading coefficient being zero.\n" + equation, True
+
     return equation, True

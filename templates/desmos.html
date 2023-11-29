@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Desmos Page</title>
+    <link rel="stylesheet" href="../static/desmos.css">
+    <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+{% endblock %}
+
+{% block body %}
+
+    <div id="calculator"></div>
+    <p id="lol">{{value}}</p>
+    <script>
+        var expression = document.getElementById("lol").textContent;
+        console.log(expression);
+        var elt = document.getElementById('calculator');
+        var calculator = Desmos.GraphingCalculator(elt, graphpaper=false);
+        calculator.setExpression({id:'graph1', latex:expression});
+    </script>
+{% endblock %}

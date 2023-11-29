@@ -51,6 +51,8 @@ def solve1():
     y = get_value('pointy')
     a = leading_coefficient_solver(h, k, x, y)
     equation = vertex_equation_concatenator(h, k, a)
+    with open("./equation.txt", "w") as file:
+        file.write(equation)
     return render_template("answer1.html", equation=equation, plot_show=True)
 
 @app.route('/answer2', methods=["POST"])
@@ -59,7 +61,20 @@ def solve2():
     x2, y2 = get_value("x2"), get_value("y2")
     x3, y3 = get_value("x3"), get_value("y3")
     equation, bools = complete_general_equation_solver(x1, y1, x2, y2, x3, y3)
+    with open("./equation.txt", "w") as file:
+        file.write(equation)
     return render_template("answer1.html", equation=equation, plot_show=bools)
+
+# Optional Features:
+@app.route('/desmos')
+def desmos():
+    with open('./equation.txt', "r") as file:
+        value = file.read()
+    return render_template("desmos.html", value=value)
+
+@app.route('/image')
+def image():
+    return render_template("image.html")
 
 # Error Handlers:
 @app.errorhandler(404)
