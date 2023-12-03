@@ -151,14 +151,14 @@ function generalEquationConcatenator(a, b, c){
         part2 = `${b}x`
     }
 
-    if (c == 0) {
+    if (a==0 && b==0 && c >= 0) {
+        part3 = `${c}`
+    }
+    else if (c == 0) {
         part3 = "";
     }
     else if (c < 0) {
         part3 = ` - ${Math.abs(c)}`;
-    }
-    else if (a==0 && b==0 && c > 0) {
-        part3 = `${c}`
     }
 
     return part0 + part1 + part2 + part3;
