@@ -36,3 +36,21 @@
 #solver_2 {
     display: none;
 }
+
+/* Managing answer display */
+
+#answerBox {
+    display: none;
+    text-align: center;
+}
+
+#calculatorBox {
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#calculator {
+    width: 1000px;
+    height: 800px;
+}
