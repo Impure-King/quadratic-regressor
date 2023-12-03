@@ -99,7 +99,7 @@ function validateNonEmpty1() {
     calcBox.style.display = "flex";
 
     if (id >= 100){
-        alert("Too many graph sessions. Please clear some on desmos.")   
+        alert("Too many graph sessions. Please reload to try again.")   
     }
     else {
         calculator?.setExpression({id:`graph${id}`, latex:equation});
