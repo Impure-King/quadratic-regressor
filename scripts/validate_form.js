@@ -107,13 +107,12 @@ function validateNonEmpty1() {
 function generalCoefficientSolver(x1, x2, x3, y1, y2, y3) {
     // Calculating the a coefficient:
     let a = ((y1-y3)*(x2-x3) - (y2-y3)*(x1-x3))/((x1-x2)*(x2-x3)*(x1-x3));
-
+    console.log(a);
     // Calculating the b coefficient;
     let b = ((y1 - y3) - (x1**2 - x3**2) * a)/(x1 - x3);
 
     // Calculating the c coefficient:
     let c = y1 - a*x1**2  - b*x1;
-
     return [a, b, c];
 }
 
@@ -148,12 +147,18 @@ function generalEquationConcatenator(a, b, c){
     else if (b < 0) {
         part2 = ` - ${Math.abs(b)}x`;
     }
+    else if (a==0 && b>0) {
+        part2 = `${b}x`
+    }
 
     if (c == 0) {
         part3 = "";
     }
     else if (c < 0) {
         part3 = ` - ${Math.abs(c)}`;
+    }
+    else if (a==0 && b==0 && c > 0) {
+        part3 = `${c}`
     }
 
     return part0 + part1 + part2 + part3;
@@ -175,10 +180,10 @@ function validateNonEmpty2() {
     }
 
     var x1 = parseFloat(x1);
-    var y1 = parseFloat(x2);
-    var x2 = parseFloat(x3);
-    var y2 = parseFloat(y1);
-    var x3 = parseFloat(y2);
+    var y1 = parseFloat(y1);
+    var x2 = parseFloat(x2);
+    var y2 = parseFloat(y2);
+    var x3 = parseFloat(x3);
     var y3 = parseFloat(y3);
 
     // Optional Handling of Coincidental points:
