@@ -98,8 +98,13 @@ function validateNonEmpty1() {
     const calcBox = document.getElementById("calculatorBox");
     calcBox.style.display = "flex";
 
-    calculator?.setExpression({id:`graph${id}`, latex:equation});
-    id += 1;
+    if (id >= 100){
+        alert("Too many graph sessions. Please clear some on desmos.")   
+    }
+    else {
+        calculator?.setExpression({id:`graph${id}`, latex:equation});
+        id += 1;
+    }
     return false
 
 }
@@ -207,6 +212,7 @@ function validateNonEmpty2() {
     let [a, b, c] = arrayOfCoefficients;
     var equation = generalEquationConcatenator(a, b, c);
 
+    console.log(equation[-1]);
     // Displaying the answer:
     var answerBox = document.getElementById("answerBox");
     var answer = document.getElementById("answer");
@@ -214,8 +220,15 @@ function validateNonEmpty2() {
     answerBox.style.display = "block";
     const calcBox = document.getElementById("calculatorBox");
     calcBox.style.display = "flex";
-    calculator?.setExpression({id:`graph${id}`, latex:equation});
-    id += 1;
+
+    // Graphing the answer:
+    if (id >= 100){
+     alert("Too many graph sessions. Please clear some on desmos.")   
+    }
+    else {
+        calculator?.setExpression({id:`graph${id}`, latex:equation});
+        id += 1;
+    }
     return false;
 }
 

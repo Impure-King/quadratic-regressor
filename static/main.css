@@ -51,6 +51,7 @@
 }
 
 #calculator {
-    width: 1000px;
+    width: 90%;
     height: 800px;
+    padding:10px;
 }
