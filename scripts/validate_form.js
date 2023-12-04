@@ -112,7 +112,7 @@ function validateNonEmpty1() {
 function generalCoefficientSolver(x1, x2, x3, y1, y2, y3) {
     // Calculating the a coefficient:
     let a = ((y1-y3)*(x2-x3) - (y2-y3)*(x1-x3))/((x1-x2)*(x2-x3)*(x1-x3));
-    console.log(a);
+    
     // Calculating the b coefficient;
     let b = ((y1 - y3) - (x1**2 - x3**2) * a)/(x1 - x3);
 
