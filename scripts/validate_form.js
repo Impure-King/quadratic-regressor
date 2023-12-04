@@ -16,9 +16,9 @@ function vertexEquationConcatenator(a, h, k) {
         k = parseInt(k);
     }
 
-    let a1 = 0;
-    let h1 = 0;
-    let k1 = 0;
+    let a1 = a;
+    let h1 = h;
+    let k1 = k;
     if (a.toString().match('e') != null){
         a1 = a.toString().split('e')[0] + " * 10^{" + a.toString().split('e')[1] + "}"
     }
@@ -145,9 +145,9 @@ function generalEquationConcatenator(a, b, c){
     if (c == parseInt(c)) {
         c = parseInt(c);
     }
-    let a1 = 0;
-    let b1 = 0;
-    let c1 = 0;
+    let a1 = a;
+    let b1 = b;
+    let c1 = c;
     if (a.toString().match('e') != null){
         a1 = a.toString().split('e')[0] + " * 10^{" + a.toString().split('e')[1] + "}"
     }
