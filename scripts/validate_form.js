@@ -16,6 +16,19 @@ function vertexEquationConcatenator(a, h, k) {
         k = parseInt(k);
     }
 
+    let a1 = 0;
+    let h1 = 0;
+    let k1 = 0;
+    if (a.toString().match('e') != null){
+        a1 = a.toString().split('e')[0] + " * 10^{" + a.toString().split('e')[1] + "}"
+    }
+    if (h.toString().match('e') != null){
+        h1 = h.toString().split('e')[0] + " * 10^{" + h.toString().split('e')[1] + "}"
+    }
+    if (k.toString().match('e') != null){
+        k1 = k.toString().split('e')[0] + " * 10^{" + k.toString().split('e')[1] + "}"
+    }
+
     // Starting string concatenation:
     let part1 = `y = `;
     let part2 = `(x - ${h})^2`;
@@ -44,7 +57,7 @@ function vertexEquationConcatenator(a, h, k) {
     }
     
     const equation = part1 + part2 + part3;
-    return equation;
+    return [equation, `y = ${a1}(x - ${h1})^2 + ${k1}`];
 }
 
 function leadingCoefficientSolver(h, k, x, y) {
@@ -88,11 +101,11 @@ function validateNonEmpty1() {
     var a = leadingCoefficientSolver(h, k, x, y);
 
     // Returning the general equation:
-    var equation = vertexEquationConcatenator(a, h, k);
+    var [equation, equation1] = vertexEquationConcatenator(a, h, k);
 
     // Writing the equation:
     const answer = document.getElementById("answer");
-    answer.textContent = `$$ ${equation} $$`;
+    answer.textContent = equation;
     const answerBox = document.getElementById("answerBox");
     answerBox.style.display = "block";
     const calcBox = document.getElementById("calculatorBox");
@@ -102,7 +115,7 @@ function validateNonEmpty1() {
         alert("Too many graph sessions. Please reload to try again.")   
     }
     else {
-        calculator?.setExpression({id:`graph${id}`, latex:equation});
+        calculator?.setExpression({id:`graph${id}`, latex:equation1});
         id += 1;
     }
     return false
@@ -132,7 +145,19 @@ function generalEquationConcatenator(a, b, c){
     if (c == parseInt(c)) {
         c = parseInt(c);
     }
-
+    let a1 = 0;
+    let b1 = 0;
+    let c1 = 0;
+    if (a.toString().match('e') != null){
+        a1 = a.toString().split('e')[0] + " * 10^{" + a.toString().split('e')[1] + "}"
+    }
+    if (b.toString().match('e') != null){
+        b1 = b.toString().split('e')[0] + " * 10^{" + b.toString().split('e')[1] + "}"
+    }
+    if (c.toString().match('e') != null){
+        c1 = c.toString().split('e')[0] + " * 10^{" + c.toString().split('e')[1] + "}"
+    }
+    
     part0 = "y = ";
     part1 = `${a}x^2`;
     part2 = ` + ${b}x`;
@@ -166,7 +191,7 @@ function generalEquationConcatenator(a, b, c){
         part3 = ` - ${Math.abs(c)}`;
     }
 
-    return part0 + part1 + part2 + part3;
+    return [part0 + part1 + part2 + part3, `y = ${a1}x^2 + ${b1}x + ${c1}`];
 }
 
 function validateNonEmpty2() {
@@ -210,9 +235,8 @@ function validateNonEmpty2() {
     const arrayOfCoefficients = generalCoefficientSolver(x1, x2, x3, y1, y2, y3);
 
     let [a, b, c] = arrayOfCoefficients;
-    var equation = generalEquationConcatenator(a, b, c);
+    var [equation, equation1] = generalEquationConcatenator(a, b, c);
 
-    console.log(equation[-1]);
     // Displaying the answer:
     var answerBox = document.getElementById("answerBox");
     var answer = document.getElementById("answer");
@@ -226,7 +250,7 @@ function validateNonEmpty2() {
      alert("Too many graph sessions. Please clear some on desmos.")   
     }
     else {
-        calculator?.setExpression({id:`graph${id}`, latex:equation});
+        calculator?.setExpression({id:`graph${id}`, latex:equation1});
         id += 1;
     }
     return false;
