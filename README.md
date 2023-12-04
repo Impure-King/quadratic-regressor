@@ -5,4 +5,6 @@
 </script>
 
 This is a grade 11 semester 1 project about how to predict quadratics based on various automatic + symbolic techniques.
-$ lol $
+```latex
+\sum
+```
