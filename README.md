@@ -1,3 +1,7 @@
-# Portfolio
+# Quadratic Regressor
+<script
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+  type="text/javascript">
+</script>
 
-This is a public portofolio that has all the projects and details about me and my academic life.
+This is a grade 11 semester 1 project about how to predict quadratics based on various automatic + symbolic techniques.
