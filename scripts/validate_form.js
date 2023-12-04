@@ -92,7 +92,7 @@ function validateNonEmpty1() {
 
     // Writing the equation:
     const answer = document.getElementById("answer");
-    answer.textContent = equation;
+    answer.textContent = `$$ ${equation} $$`;
     const answerBox = document.getElementById("answerBox");
     answerBox.style.display = "block";
     const calcBox = document.getElementById("calculatorBox");
@@ -238,12 +238,18 @@ function changeForm() {
     var method_name = document.getElementById("methods").value;
     const method1 = document.getElementById("solver_1");
     const method2 = document.getElementById("solver_2");
+    const exp1 = document.getElementById("explaination1");
+    const exp2 = document.getElementById("explaination2");
     method1.style.display = "none";
     method2.style.display = "none";
+    exp1.style.display = "none";
+    exp2.style.display = "none";
     if (parseInt(method_name) === 1) {
         method1.style.display = "block";
+        exp1.style.display = "block";
     }
     else if (parseInt(method_name) === 2) {
         method2.style.display = "block";
+        exp2.style.display = "block";
     }
 }

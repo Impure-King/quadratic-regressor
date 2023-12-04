@@ -55,3 +55,18 @@
     height: 800px;
     padding:10px;
 }
+
+/* Managing algorithmic explaination */
+#latex-container {
+    text-align: center;
+    color: white;
+    background-color: darkslategray;
+}
+
+#explaination1 {
+    display: block;
+}
+
+#explaination2 {
+    display:none;
+}

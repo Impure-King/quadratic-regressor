@@ -116,7 +116,47 @@
     <!-- IGNORE: LaTeX Guide -->
     <div id="latex-container">
         <hr>
-        <p>$$\sum$$</p>
+        <h3>Algorithm Explaination</h3>
+        <div id="explaination1">
+            <h4>Method 1</h4>
+            <p>When computing the vertex equation, we can use the vertex (x, y) as (h, k) for the equation below:</p>
+            <p>$$y = a(x - h)^2 + k$$</p>
+            <p>Now to find a, we can isolate algebraicly:</p>
+            <p>$$y = a(x - h)^2 + k$$</p>
+            <p>$$\implies y - k = a(x - h)^2$$</p>
+            <p>$$\implies (y - k)/(x - h)^2 = a $$</p>
+            <p>Thus we get: $$ a = \frac{(y - k)}{(x - h)^2} $$</p>
+            <p>By plugging in the second point, we can get the leading coefficient.</p>
+        </div>
+        <div id="explaination2">
+            <h4>Method 2</h4>
+            <p>The three points can be represented as: $$(x_1, y_1);(x_2, y_2);(x_3, y_3)$$</p>
+            <p>By plugging each point in the general equation we get:</p>
+            <p>$$ax_1^2 + bx_1 + c = y_1$$</p>
+
+            <p>$$ax_2^2 + bx_2 + c = y_2$$</p>
+
+            <p>$$ax_3^2 + bx_3 + c = y_3$$</p>
+            <p>where we want to solve for coefficients. Subtract equation (i) with (iii) and equation (ii) with (iii):</p>
+            <p>$$a(x_1^2 - x_3^2) + b(x_1 - x_3) = y_1 - y_3$$</p>
+            <p>$$a(x_2^2 - x_3^2) + b(x_2 - x_3) = y_2 - y_3$$</p>
+            <p>Now aiming to eliminate b:</p>
+            <p>$$a(x_1^2 - x_3^2)(x_2 - x_3) + b(x_1 - x_3)(x_2 - x_3) - a(x_2^2 - x_3^2)(x_1 - x_3) - b(x_2 - x_3)(x_1 - x_3) = (y_1 - y_3)(x_2 - x_3) - (y_2 - y_3)(x_1 - x_3)$$</p>
+            <p>$$\implies a(x_1^2 - x_3^2)(x_2 - x_3) - a(x_2^2 - x_3^2)(x_1 - x_3) = (y_1 - y_3)(x_2 - x_3) - (y_2 - y_3)(x_1 - x_3)$$</p>
+            <p> Now applying the difference of squares and factoring:</p>
+            <p>$$a(x_1 - x_3)(x_1 + x_3)(x_2 - x_3) - a(x_2 - x_3)(x_2 + x_3)(x_1 - x_3) = (y_1 - y_3)(x_2 - x_3) - (y_2 - y_3)(x_1 - x_3)$$</p>
+            <p>$$\implies a(x_1 - x_3)(x_2 - x_3)[(x_1 + x_3) - (x_2 + x_3)] = (y_1 - y_3)(x_2 - x_3) - (y_2 - y_3)(x_1 - x_3)$$</p>
+            <p>$$\implies a(x_1 - x_3)(x_2 - x_3)(x_1 - x_2) = (y_1 - y_3)(x_2 - x_3) - (y_2 - y_3)(x_1 - x_3)$$</p>
+            <p>Thus, $$a = \frac{(y_1 - y_3)(x_2 - x_3) - (y_2 - y_3)(x_1 - x_3)}{(x_1 - x_3)(x_2 - x_3)(x_1 - x_2)}$$</p>
+            <p>By applying domain, the restrictions are that none of the abscissas are equal, which is valid consider we are solving <b>quadration functions</b>.</p>
+            <p>Now using the value of a, we can solve for b:</p>
+            <p>$$a(x_1^2 - x_3^2) + b(x_1 - x_3) = y_1 - y_3 \lor a(x_2^2 - x_3^2) + b(x_2 - x_3) = y_2 - y_3$$</p>
+            <p>$$\implies b = \frac{(y_1 - y_3) - a(x_1^2 - x_3^2)}{(x_1 - x_3)} \lor b = \frac{(y_2 - y_3) - a(x_2^2 - x_3^2)}{(x_2 - x_3)}$$</p>
+            <p>Either ways should yield the correct value of b. Now to solve c:</p>
+            <p>$$ax_1^2 + bx_1 + c = y_1 \lor ax_2^2 + bx_2 + c = y_2 \lor ax_3^2 + bx_3 + c = y_3$$</p>
+            <p>$$c = y_1 - (x_1^2 + bx_1) \lor c = y_2 - (ax_2^2 + bx_2) \lor c = y_3 - (ax_3^2 + bx_3)$$</p>
+            <p>Thus, with minimal restrictions we can now solve for the quadratic equation.</p>
+        </div>
     </div>
 </body>
 </html>
