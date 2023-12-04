@@ -16,7 +16,11 @@
     <link rel="stylesheet" type="text/css" href="./static/main.css">
     <script src='./scripts/validate_form.js'></script>
     <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
-
+    <!--Adding JS library to allow for latex display-->
+    <script
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+      type="text/javascript">
+    </script>
 </head>
 
 <body>
@@ -96,6 +100,7 @@
             <p id="answer">Answer</p>
             <hr>
         </div>
+        <!-- Adding Desmos Calculator -->
         <div id="calculatorBox">
             <div id="calculator">
                 
@@ -106,7 +111,12 @@
                 var id=1;
             </script>
         </div>
+    </div>
 
+    <!-- IGNORE: LaTeX Guide -->
+    <div id="latex-container">
+        <hr>
+        <p>$$\sum$$</p>
     </div>
 </body>
 </html>
