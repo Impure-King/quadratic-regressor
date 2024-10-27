@@ -4,7 +4,7 @@
   type="text/javascript">
 </script>
 
-This is a grade 11 semester 1 project about how to predict quadratics based on various automatic + symbolic techniques.
+A basic web project that improved my web-development skills and helped increase my understanding of polynomial regression.
 ```latex
 \sum
 ```
