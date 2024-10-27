@@ -5,6 +5,3 @@
 </script>
 
 A basic web project that improved my web-development skills and helped increase my understanding of polynomial regression.
-```latex
-\sum
-```
